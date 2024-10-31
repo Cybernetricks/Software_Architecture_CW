@@ -2,21 +2,15 @@ package Depot;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 
 public class Log {
   private String[] event;
   private int current_Size = 0;
-  private int max;
 
   public Log(int max) 
   {
-    this.max = max;
     event = new String[max];
   }
 

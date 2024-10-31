@@ -10,9 +10,18 @@ public class QueueOfCustomers {
     head = rear = null;
   }
 
-  public boolean isEmpty()
+  public String toString()
   {
-    return head == null && rear == null;
+    QueueNode currentNode = head;
+    String queueString = "";
+    while(currentNode != null){
+      queueString += currentNode.getCustomer().getName();
+      queueString += " ";
+      queueString += currentNode.getCustomer().getParcelId();
+      queueString += "\n";
+      currentNode = currentNode.getNextQueueNode();
+    }
+    return queueString;
   }
 
   public void enqueue(int position, Customer customer)
@@ -50,11 +59,24 @@ public class QueueOfCustomers {
     return head.getPosition();
   }
 
+  public int getRearPosition()
+  {
+    if (isEmpty()) {
+      return 0;
+    }
+    return rear.getPosition();
+  }
+
   public Customer getHeadCustomer()
   {
     if (isEmpty()) {
       return null;
     }
     return head.getCustomer();
+  }
+
+  private boolean isEmpty()
+  {
+    return head == null && rear == null;
   }
 }
