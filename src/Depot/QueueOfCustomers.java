@@ -14,13 +14,16 @@ public class QueueOfCustomers {
   {
     QueueNode currentNode = head;
     String queueString = "";
-    while(currentNode != null){
+    while(currentNode.getNextQueueNode() != null){
       queueString += currentNode.getCustomer().getName();
       queueString += " ";
       queueString += currentNode.getCustomer().getParcelId();
       queueString += "\n";
       currentNode = currentNode.getNextQueueNode();
     }
+    queueString += currentNode.getCustomer().getName();
+    queueString += " ";
+    queueString += currentNode.getCustomer().getParcelId();
     return queueString;
   }
 
