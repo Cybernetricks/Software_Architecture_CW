@@ -37,7 +37,7 @@ public class Log {
 
   public void addToEventLog(String event)
   {
-    this.event[current_Size++] = event;
+    this.event[current_Size++] = "Event " + current_Size + "\n" + event + "\n";
   }
 
   public void writeToLogFile(String filename)
