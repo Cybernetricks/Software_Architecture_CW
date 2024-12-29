@@ -24,7 +24,7 @@ public class QueueNode {
     return next;
   }
 
-  public void setNextQueueNode(QueueNode QueueNode) {
-    this.next = QueueNode;
+  public void setNextQueueNode(QueueNode queueNode) {
+    this.next = queueNode;
   }
 }
