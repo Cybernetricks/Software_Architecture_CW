@@ -6,18 +6,22 @@ public class Parcel {
   private int daysInCollection = 0;
   private boolean collected = false;
 
-  public Parcel(float length, float width, float height, float weight)
+  public Parcel(String id, float length, float width, float height, int daysInCollection, float weight)
   {
+    this.id = id;
     this.length = length;
     this.width = width;
     this.height = height;
+    this.daysInCollection = daysInCollection;
     this.weight = weight;
   }
+
+  public Parcel() {}
 
   public String getId() {
     return id;
   }
-  
+
   public void setId(String id) {
     this.id = id;
   }
