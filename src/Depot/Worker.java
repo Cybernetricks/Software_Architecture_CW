@@ -3,21 +3,26 @@ package Depot;
 public class Worker {
   private QueueOfCustomers queueOfCustomers;
 
-  public Worker(QueueOfCustomers queueOfCustomers)
+  public Worker()
   {
-    this.queueOfCustomers = queueOfCustomers;
+    this.queueOfCustomers = new QueueOfCustomers();
   }
 
   public float processCurrentCustomerInQueue(Parcel parcel)
   {
-    float collectionFee = calculateCollectionFee(parcel);
+    float collectionFee = calculateFee(parcel);
     releaseParcel(parcel);
     removeCurrentCustomerInQueue();
 
     return collectionFee;
   }
 
-  public float calculateCollectionFee(Parcel parcel)
+  public String getCurrentCustomerParcelId()
+  {
+    return getHeadCustomer().getParcelId();
+  }
+
+  public float calculateFee(Parcel parcel)
   {
     return parcel.getWeight() * 0.2f * parcel.getDaysInCollection();
   }
@@ -43,9 +48,13 @@ public class Worker {
     queueOfCustomers.dequeue();
   }
 
+  private Customer getHeadCustomer()
+  {
+    return queueOfCustomers.getHeadCustomer();
+  }
+
   public static void main(String args[]){
-		QueueOfCustomers queue = new QueueOfCustomers();
-		Worker worker = new Worker(queue);
+		Worker worker = new Worker();
     
     Customer customer = new Customer("Dick McFarts", null);
     worker.addCustomerToQueue(customer);
