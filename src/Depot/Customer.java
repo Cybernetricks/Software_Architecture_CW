@@ -10,6 +10,8 @@ public class Customer {
     this.parcelId = parcelId;
   }
 
+  public Customer() {}
+
   public String getName() {
     return name;
   }
