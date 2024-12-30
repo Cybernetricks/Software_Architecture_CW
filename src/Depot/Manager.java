@@ -6,7 +6,7 @@ import java.io.FileReader;
 public class Manager {
   private Worker worker = new Worker();
   private ParcelMap parcelMap = new ParcelMap();
-  private Log log = new Log(100);
+  private Log log = new Log(500);
   private Gui gui = new Gui(this);
 
   public Manager() {}
@@ -40,13 +40,26 @@ public class Manager {
     return true;
   }
 
-  public float processCurrentCustomerInQueue()
+  public String getHeadParcel()
   {
-    Parcel parcel = parcelMap.getParcel(worker.getCurrentCustomerParcelId());
-    parcelMap.changeParcelState(parcel.getId());
-    float collectionFee = worker.processCurrentCustomerInQueue(parcel);
-    addToEventLog("Parcel with ID " + parcel.getId() + " has been collected");
-    return collectionFee;
+    String currentParcelId = worker.getCurrentCustomerParcelId();
+    if (currentParcelId != null){
+      Parcel parcel = parcelMap.getParcel(worker.getCurrentCustomerParcelId());
+      String parcelDetails = parcel.toString() + "\nCollection Fee - £" + String.format("%.02f", worker.calculateFee(parcel));
+      return parcelDetails;
+    }
+    return "";
+  }
+
+  public void processCurrentCustomerInQueue()
+  {
+    String currentParcelId = worker.getCurrentCustomerParcelId();
+    if (currentParcelId != null){
+      Parcel parcel = parcelMap.getParcel(worker.getCurrentCustomerParcelId());
+      parcelMap.changeParcelState(parcel.getId());
+      worker.processCurrentCustomerInQueue(parcel);
+      addToEventLog("Parcel with ID " + parcel.getId() + " has been collected");
+    }
   }
 
   public String customerQueueToString()
