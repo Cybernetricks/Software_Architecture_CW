@@ -12,6 +12,10 @@ public class QueueOfCustomers {
 
   public String toString()
   {
+    if (isEmpty()){
+      return "";
+    }
+
     QueueNode currentNode = head;
     String queueString = "";
     while(currentNode.getNextQueueNode() != null){
