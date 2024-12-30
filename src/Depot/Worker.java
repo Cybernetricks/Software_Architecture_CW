@@ -19,7 +19,10 @@ public class Worker {
 
   public String getCurrentCustomerParcelId()
   {
-    return getHeadCustomer().getParcelId();
+    if (getHeadCustomer() != null) {
+      return getHeadCustomer().getParcelId();
+    }
+    return null;
   }
 
   public float calculateFee(Parcel parcel)
@@ -52,16 +55,4 @@ public class Worker {
   {
     return queueOfCustomers.getHeadCustomer();
   }
-
-  public static void main(String args[]){
-		Worker worker = new Worker();
-    
-    Customer customer = new Customer("Dick McFarts", null);
-    worker.addCustomerToQueue(customer);
-    System.out.println("Addition");
-    System.out.print(worker.customerQueueToString());
-    worker.removeCurrentCustomerInQueue();
-    System.out.println("Subtraction");
-    System.out.print(worker.customerQueueToString());
-	}
 }
