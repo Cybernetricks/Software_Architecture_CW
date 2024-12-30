@@ -18,6 +18,26 @@ public class Parcel {
 
   public Parcel() {}
 
+  public String toString()
+  {
+    String parcelString = "";
+    parcelString += "ID, Length, Width, Height, Weight, Days in collection, Collected?\n";
+    parcelString += getId();
+    parcelString += " - ";
+    parcelString += Float.toString(getLength());
+    parcelString += ", ";
+    parcelString += Float.toString(getWidth());
+    parcelString += ", ";
+    parcelString += Float.toString(getHeight());
+    parcelString += ", ";
+    parcelString += Float.toString(getWeight());
+    parcelString += ", ";
+    parcelString += Integer.toString(getDaysInCollection());
+    parcelString += ", ";
+    parcelString += Boolean.toString(isCollected());
+    return parcelString;
+  }
+
   public String getId() {
     return id;
   }
