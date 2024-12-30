@@ -50,7 +50,6 @@ public class Log {
 			BufferedWriter bw = new BufferedWriter(wr);
 			bw.write(eventLog.toString());
 			bw.close();
-			System.out.println("file written to " + filename); //Can remove
 		  }catch(Exception e){
 			  System.out.println(e.getMessage());
 		  }
